@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ViewFlipper viewFlipper;
-    static int x;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,26 +38,19 @@ public class MainActivity extends AppCompatActivity {
         btnBack04 = (Button) (findViewById(R.id.btnBack04));
         relativeLayout = (RelativeLayout) (findViewById(R.id.background));
         imageView = (ImageView) (findViewById(R.id.imageView01));
-        x = 0;
 
         relativeLayout.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
             @Override
             public void onSwipeLeft() {
-                if(x<3) {
-                    viewFlipper.setInAnimation(getApplicationContext(), R.anim.slide_in_from_right);
-                    viewFlipper.setOutAnimation(getApplicationContext(), R.anim.slide_out_to_left);
-                    viewFlipper.showNext();
-                    x++;
-                }
+                viewFlipper.setInAnimation(getApplicationContext(), R.anim.slide_in_from_right);
+                viewFlipper.setOutAnimation(getApplicationContext(), R.anim.slide_out_to_left);
+                viewFlipper.showNext();
             }
 
             public void onSwipeRight() {
-                if (x > 0) {
                     viewFlipper.setInAnimation(getApplicationContext(), R.anim.slide_in_from_left);
                     viewFlipper.setOutAnimation(getApplicationContext(), R.anim.slide_out_to_right);
                     viewFlipper.showPrevious();
-                    x--;
-                }
             }
         });
 
@@ -123,5 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }
 
